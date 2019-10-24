@@ -91,6 +91,12 @@
     <Compile Include="Model\Administrativ\UnlockForm.Designer.cs">
       <DependentUpon>UnlockForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\EditRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\EditRecords.Designer.cs">
+      <DependentUpon>EditRecords.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Model\Administrativ\UnlockForm.resx">
       <DependentUpon>UnlockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\EditRecords.resx">
+      <DependentUpon>EditRecords.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -145,6 +154,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="NewFolder1\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

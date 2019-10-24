@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace MBAF.DataBase
 {
-    internal class MyDBContext : DbContext
+    public class MyDBContext : DbContext
     {
         internal MyDBContext() : base($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Application.StartupPath}\DataBase\Database1.mdf;Integrated Security=True;")
         {

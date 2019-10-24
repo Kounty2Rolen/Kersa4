@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.components = new System.ComponentModel.Container();
             this.MainDataGridView = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -38,14 +38,19 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.добавитьАудиториюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьАудиториюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отредактироватьЗаписьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdmintoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.отредактироватьЗаписьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.AddTpoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            this.MainContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainDataGridView
@@ -81,7 +86,6 @@
             this.ConnectDBToolStripMenuItem,
             this.DisconnectDBToolStripMenuItem,
             this.RefreshToolStripMenuItem});
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(98, 22);
@@ -90,21 +94,21 @@
             // ConnectDBToolStripMenuItem
             // 
             this.ConnectDBToolStripMenuItem.Name = "ConnectDBToolStripMenuItem";
-            this.ConnectDBToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ConnectDBToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.ConnectDBToolStripMenuItem.Text = "Подключится к БД";
             this.ConnectDBToolStripMenuItem.Click += new System.EventHandler(this.ConnectDBToolStripMenuItem_Click);
             // 
             // DisconnectDBToolStripMenuItem
             // 
             this.DisconnectDBToolStripMenuItem.Name = "DisconnectDBToolStripMenuItem";
-            this.DisconnectDBToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DisconnectDBToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.DisconnectDBToolStripMenuItem.Text = "Отключится от БД";
             this.DisconnectDBToolStripMenuItem.Click += new System.EventHandler(this.DisconncetDBToolStripMenuItem_Click);
             // 
             // RefreshToolStripMenuItem
             // 
             this.RefreshToolStripMenuItem.Name = "RefreshToolStripMenuItem";
-            this.RefreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.RefreshToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.RefreshToolStripMenuItem.Text = "Обновить данные";
             this.RefreshToolStripMenuItem.Click += new System.EventHandler(this.RefreshToolStripMenuItem_Click);
             // 
@@ -115,7 +119,6 @@
             this.добавитьАудиториюToolStripMenuItem,
             this.удалитьАудиториюToolStripMenuItem,
             this.отредактироватьЗаписьToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.Size = new System.Drawing.Size(66, 22);
@@ -124,15 +127,23 @@
             // добавитьАудиториюToolStripMenuItem
             // 
             this.добавитьАудиториюToolStripMenuItem.Name = "добавитьАудиториюToolStripMenuItem";
-            this.добавитьАудиториюToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.добавитьАудиториюToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.добавитьАудиториюToolStripMenuItem.Text = "Добавить Аудиторию";
             this.добавитьАудиториюToolStripMenuItem.Click += new System.EventHandler(this.AddAudienceToolStripMenuItem_Click);
             // 
             // удалитьАудиториюToolStripMenuItem
             // 
             this.удалитьАудиториюToolStripMenuItem.Name = "удалитьАудиториюToolStripMenuItem";
-            this.удалитьАудиториюToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.удалитьАудиториюToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.удалитьАудиториюToolStripMenuItem.Text = "Удалить аудиторию";
+            this.удалитьАудиториюToolStripMenuItem.Click += new System.EventHandler(this.УдалитьАудиториюToolStripMenuItem_Click);
+            // 
+            // отредактироватьЗаписьToolStripMenuItem
+            // 
+            this.отредактироватьЗаписьToolStripMenuItem.Name = "отредактироватьЗаписьToolStripMenuItem";
+            this.отредактироватьЗаписьToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.отредактироватьЗаписьToolStripMenuItem.Text = "Отредактировать запись";
+            this.отредактироватьЗаписьToolStripMenuItem.Click += new System.EventHandler(this.ОтредактироватьЗаписьToolStripMenuItem_Click);
             // 
             // toolStripButton2
             // 
@@ -140,7 +151,6 @@
             this.toolStripButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.помощьToolStripMenuItem,
             this.оПрограммеToolStripMenuItem});
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(66, 22);
@@ -161,7 +171,6 @@
             // AdmintoolStripButton
             // 
             this.AdmintoolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.AdmintoolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("AdmintoolStripButton.Image")));
             this.AdmintoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AdmintoolStripButton.Name = "AdmintoolStripButton";
             this.AdmintoolStripButton.Size = new System.Drawing.Size(98, 22);
@@ -176,11 +185,35 @@
             this.toolStripButton3.Size = new System.Drawing.Size(95, 22);
             this.toolStripButton3.Text = "Заблокировать";
             // 
-            // отредактироватьЗаписьToolStripMenuItem
+            // MainContextMenuStrip
             // 
-            this.отредактироватьЗаписьToolStripMenuItem.Name = "отредактироватьЗаписьToolStripMenuItem";
-            this.отредактироватьЗаписьToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.отредактироватьЗаписьToolStripMenuItem.Text = "Отредактировать запись";
+            this.MainContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddTpoolStripMenuItem,
+            this.DelToolStripMenuItem,
+            this.EditToolStripMenuItem});
+            this.MainContextMenuStrip.Name = "MainContextMenuStrip";
+            this.MainContextMenuStrip.Size = new System.Drawing.Size(193, 70);
+            // 
+            // AddTpoolStripMenuItem
+            // 
+            this.AddTpoolStripMenuItem.Name = "AddTpoolStripMenuItem";
+            this.AddTpoolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.AddTpoolStripMenuItem.Text = "Добавить аудиторию";
+            this.AddTpoolStripMenuItem.Click += new System.EventHandler(this.AddTpoolStripMenuItem_Click);
+            // 
+            // DelToolStripMenuItem
+            // 
+            this.DelToolStripMenuItem.Name = "DelToolStripMenuItem";
+            this.DelToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.DelToolStripMenuItem.Text = "Удалить аудиторию";
+            this.DelToolStripMenuItem.Click += new System.EventHandler(this.DelToolStripMenuItem_Click);
+            // 
+            // EditToolStripMenuItem
+            // 
+            this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
+            this.EditToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.EditToolStripMenuItem.Text = "Изменить аудиторию";
+            this.EditToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -190,12 +223,15 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.MainDataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(816, 489);
+            this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "MainForm";
             this.Text = "Аудиторный фонд многокорпусного здания";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.MainContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,16 +244,20 @@
         private System.Windows.Forms.ToolStripDropDownButton toolStripButton1;
         private System.Windows.Forms.ToolStripMenuItem ConnectDBToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem DisconnectDBToolStripMenuItem;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripButton2;
-        private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton AdmintoolStripButton;
         private System.Windows.Forms.ToolStripMenuItem RefreshToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ContextMenuStrip MainContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem AddTpoolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem добавитьАудиториюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьАудиториюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отредактироватьЗаписьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripButton2;
+        private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
     }
 }
 

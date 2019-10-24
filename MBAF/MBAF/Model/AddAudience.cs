@@ -12,62 +12,84 @@ namespace MBAF.Model
 {
     public partial class AddAudience : Form
     {
-        public AddAudience(in MainForm main)
+        DataBase.MyDBContext context;
+        bool FirstRow = false;
+        public AddAudience(in DataBase.MyDBContext context, bool FirstRow = false)
         {
             InitializeComponent();
-            //DataSet ds = new DataSet();
-            //CorpsComboBox.DataSource=(from DataRow row in main.GetContect(in ds, "select  c.CorpNumber  from Corps c").Tables[0].Rows select row["CorpNumber"]).ToList();
-            using (var context = new DataBase.MyDBContext())
-            {
-                CorpsComboBox.DataSource = context.Corps.Select(c => c.CorpNumber).ToList();
-                CorpsComboBox.SelectedIndex = -1;
-            }
+            this.context = context;
+            this.FirstRow = FirstRow;
+            CorpsComboBox.DataSource = context.Corps.Select(c => c.CorpNumber).ToList();
+            CorpsComboBox.SelectedIndex = -1;
         }
 
-        private void CorpsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
-            if (CorpsComboBox.SelectedIndex >= 0)
+            try
             {
-                CabinetComboBox.Enabled = true;
-               
-                    using (var context = new DataBase.MyDBContext())
-                    {
-                        CabinetComboBox.DataSource = context.AudienceType.Select(c => c.Cabinet).ToList();
-                        CabinetComboBox.SelectedIndex = -1;
-                    }
-            }
-            else
-                CabinetComboBox.Enabled = false;
+                DateTime.Parse(BirthDayMaskedTextBox.Text);
+                var teacher = new DataBase.Teacher();
 
-        }
+                var fio = FIOTextBox.Text.Split(' ');
+                teacher.Mname = fio[0];
+                teacher.Fname = fio[1];
+                teacher.Lname = fio[2];
+                teacher.Phone = PhoneMaskedTextBox.Text;
+                teacher.Birthday = DateTime.Parse(BirthDayMaskedTextBox.Text);
 
-        private void CabinetComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CabinetComboBox.SelectedIndex >= 0)
-            {
-                FireSecurityComboBox.Enabled = true;
-                if (FireSecurityComboBox.DataSource == null)
-                    using (var context = new DataBase.MyDBContext())
+                context.Teachers.Add(teacher);
+
+                var corps = new DataBase.Corps
                 {
-                    FireSecurityComboBox.DataSource = context.AudienceType.Select(c => c.Cabinet).ToList();
-                    FireSecurityComboBox.SelectedIndex = -1;
-                }
-            }
-            else
-                FireSecurityComboBox.Enabled = false;
+                    CorpNumber = CorpsComboBox.Text,
+                    NumberOfAudiences = (int)AuditorNumericUpDown.Value
+                };
+                context.Corps.Add(corps);
 
+                var AudienceType = new DataBase.AudienceType
+                {
+                    Cabinet = CabinetTextBox.Text,
+                    TypeOf = AudTypeTextBox.Text,
+                    Capacity = (int)AuditoryCapacityNumericUpDown.Value
+                };
+                AudienceType.Teacherid = teacher.Id;
+                AudienceType.Corpid = corps.Id;
+                context.AudienceType.Add(AudienceType);
+                context.SaveChanges();
+                MessageBox.Show("Запись добавлена!","Успешно!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                this.Close();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Данные введены не верно!, проверьте введеные данные","Ошибка!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+            }
+                
         }
 
-        private void FireSecurityComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void CorpsComboBox_TextUpdate(object sender, EventArgs e)
         {
-
-            if (FireSecurityComboBox.SelectedIndex >= 0)
+            if (CorpsComboBox.Text != "")
             {
+                AuditorNumericUpDown.Enabled = true;
+                AuditoryCapacityNumericUpDown.Enabled = true;
+                CabinetTextBox.Enabled = true;
+                AudTypeTextBox.Enabled = true;
+                FIOTextBox.Enabled = true;
+                BirthDayMaskedTextBox.Enabled = true;
                 PhoneMaskedTextBox.Enabled = true;
             }
             else
+            {
+                AuditorNumericUpDown.Enabled = false;
+                AuditoryCapacityNumericUpDown.Enabled = false;
+                CabinetTextBox.Enabled = false;
+                AudTypeTextBox.Enabled = false;
+                FIOTextBox.Enabled = false;
+                BirthDayMaskedTextBox.Enabled = false;
                 PhoneMaskedTextBox.Enabled = false;
-
+            }
         }
     }
 }
