@@ -34,6 +34,7 @@ namespace MBAF.Model
                 teacher.Mname = fio[0];
                 teacher.Fname = fio[1];
                 teacher.Lname = fio[2];
+                fio= null;
                 teacher.Phone = PhoneMaskedTextBox.Text;
                 teacher.Birthday = DateTime.Parse(BirthDayMaskedTextBox.Text);
 
@@ -58,11 +59,12 @@ namespace MBAF.Model
                 context.SaveChanges();
                 MessageBox.Show("Запись добавлена!","Успешно!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 this.Close();
+                this.Dispose();
 
             }
             catch (Exception)
             {
-                MessageBox.Show("Данные введены не верно!, проверьте введеные данные","Ошибка!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+              MessageBox.Show("Данные введены не верно!, проверьте введеные данные","Ошибка!",MessageBoxButtons.OK,MessageBoxIcon.Error);
 
             }
                 

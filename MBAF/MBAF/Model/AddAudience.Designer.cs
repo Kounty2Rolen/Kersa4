@@ -232,10 +232,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.CorpsComboBox);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(305, 275);
             this.Name = "AddAudience";
+            this.Text = "Добавление записи";
             ((System.ComponentModel.ISupportInitialize)(this.AuditorNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuditoryCapacityNumericUpDown)).EndInit();
             this.ResumeLayout(false);

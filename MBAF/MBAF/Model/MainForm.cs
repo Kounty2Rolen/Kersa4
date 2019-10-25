@@ -15,7 +15,7 @@ namespace MBAF
             this.CenterToScreen();
         }
 
-         DataBase.MyDBContext context = new DataBase.MyDBContext();
+        DataBase.MyDBContext context = new DataBase.MyDBContext();
 
         void DGVRefresh()
         {
@@ -48,12 +48,7 @@ namespace MBAF
 
         private void ConnectDBToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
-            //context.AudienceType.Load();
-            //MainDataGridView.DataSource = context.AudienceType.Local.ToBindingList();
             DGVRefresh();
-
         }
 
         private void DisconncetDBToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,15 +67,66 @@ namespace MBAF
 
         void ShowAddAudience()
         {
-            Model.AddAudience add;
-            if (MainDataGridView.Rows == null)
-               add = new Model.AddAudience(context,true);
-            else
+            Model.AddAudience add = null;
+            if (MainDataGridView.DataSource != null)
+            {
                 add = new Model.AddAudience(context);
-            add.ShowDialog();
-            add.Dispose();
+                add.ShowDialog();
+                add.Dispose();
+            }
+            else
+                MessageBox.Show("Таблица не подключена! Пожалуйста подключите таблицу и попробуйте еще раз", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
+
+        void DeleteRow()
+        {
+
+            int id = 0;
+
+            if (MainDataGridView.DataSource != null)
+                if (MainDataGridView.CurrentRow != null)
+                {
+                    id = Convert.ToInt32(MainDataGridView.CurrentRow.Cells[0].Value);
+                    if (id != null)
+                    {
+                        DataBase.AudienceType audience = context.AudienceType.Where(c => c.Id == id).FirstOrDefault();
+                        context.AudienceType.Remove(audience);
+                        context.SaveChanges();
+                    }
+                    else
+                        MessageBox.Show("Таблица не подключена! Пожалуйста подключите таблицу и попробуйте еще раз", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            else
+                    MessageBox.Show("Запись не выбрана! Пожалуйста выберете запись и попробуйте еще раз", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+
+        void editrow()
+        {
+            int Id = -1;
+            if (MainDataGridView.DataSource != null)
+            {
+                if (MainDataGridView.CurrentRow != null)
+                {
+                    Id = Convert.ToInt32(MainDataGridView.CurrentRow.Cells[0].Value);
+                    if (Id != null)
+                    {
+                        Model.EditRecords edit = new Model.EditRecords(Id);
+                        edit.ShowDialog();
+
+
+                    }
+                    else
+                        MessageBox.Show("Таблица не подключена! Пожалуйста подключите таблицу и попробуйте еще раз", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                    MessageBox.Show("Запись не выбрана! Пожалуйста выберете запись и попробуйте еще раз", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+        }
+
         private void AddAudienceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowAddAudience();
@@ -88,16 +134,7 @@ namespace MBAF
 
         private void УдалитьАудиториюToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var id = 0;
-            if (MainDataGridView.Rows == null)
-                id = Convert.ToInt32(MainDataGridView.CurrentRow.Cells[0]);
-            if (id != null)
-            {
-                DataBase.AudienceType audience = context.AudienceType.Where(c => c.Id == id).FirstOrDefault();
-                context.AudienceType.Remove(audience);
-            }
-
-
+            DeleteRow();
         }
 
         private void AddTpoolStripMenuItem_Click(object sender, EventArgs e)
@@ -107,23 +144,17 @@ namespace MBAF
 
         private void DelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var id = 0;
-            if (MainDataGridView.Rows == null)
-                id = Convert.ToInt32(MainDataGridView.CurrentRow.Cells[0]);
-            if (id != null)
-            {
-                DataBase.AudienceType audience = context.AudienceType.Where(c => c.Id == id).FirstOrDefault();
-                context.AudienceType.Remove(audience);
-            }
+            DeleteRow();
         }
 
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            editrow();
         }
 
         private void ОтредактироватьЗаписьToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            editrow();
 
         }
 
