@@ -12,14 +12,15 @@ namespace MBAF.Model
 {
     public partial class EditRecords : Form
     {
-        DataBase.MyDBContext context = new DataBase.MyDBContext();
+        DataBase.MyDBContext context;
         DataBase.Corps corps;
         DataBase.Teacher teacher;
         DataBase.AudienceType audience;
         int id = 0;
-        public EditRecords(int id)
+        public EditRecords(int id,ref DataBase.MyDBContext context)
         {
             InitializeComponent();
+            this.context = context;
             this.id = id;
             corps = context.Corps.Where(c => c.Id == id).FirstOrDefault();
             teacher = context.Teachers.Where(c => c.Id == id).SingleOrDefault();
@@ -36,8 +37,10 @@ namespace MBAF.Model
             AuditoryCapacityNumericUpDown.Value = audience.Capacity;
             AudTypeTextBox.Text = audience.TypeOf;
             CabinetTextBox.Text = audience.Cabinet;
-            FIOTextBox.Text = teacher.Mname + " " + teacher.Fname + " " + teacher.Lname;
-            BirthDayMaskedTextBox.Text = teacher.Birthday.ToString().Reverse().ToString();
+            MnameTextBox.Text = teacher.Mname;
+            FnameTextBox.Text = teacher.Fname;
+            LnameTextBox.Text = teacher.Lname;
+            BirthDayMaskedTextBox.Text = DateTime.Parse(teacher.Birthday.ToString()).ToString();
             PhoneMaskedTextBox.Text = teacher.Phone;
         }
 
@@ -48,16 +51,20 @@ namespace MBAF.Model
             audience.Cabinet = CabinetTextBox.Text;
             audience.Capacity = (int)AuditoryCapacityNumericUpDown.Value;
             audience.TypeOf = AudTypeTextBox.Text;
-            var fio = FIOTextBox.Text.Split(' ');
-            teacher.Mname = fio[0];
-            teacher.Fname = fio[1];
-            teacher.Lname = fio[2];
+            teacher.Mname = MnameTextBox.Text;
+            teacher.Fname = FnameTextBox.Text;
+            teacher.Lname = LnameTextBox.Text;
             teacher.Phone = PhoneMaskedTextBox.Text;
             teacher.Birthday = DateTime.Parse(BirthDayMaskedTextBox.Text);
             context.SaveChanges();
             MessageBox.Show("Запись Изменена!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             this.Close();
             this.Dispose();
+        }
+
+        private void EditRecords_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

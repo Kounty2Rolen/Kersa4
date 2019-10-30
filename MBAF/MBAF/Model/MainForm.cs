@@ -70,9 +70,10 @@ namespace MBAF
             Model.AddAudience add = null;
             if (MainDataGridView.DataSource != null)
             {
-                add = new Model.AddAudience(context);
+                add = new Model.AddAudience(ref context);
                 add.ShowDialog();
                 add.Dispose();
+                DGVRefresh();
             }
             else
                 MessageBox.Show("Таблица не подключена! Пожалуйста подключите таблицу и попробуйте еще раз", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -112,7 +113,7 @@ namespace MBAF
                     Id = Convert.ToInt32(MainDataGridView.CurrentRow.Cells[0].Value);
                     if (Id != null)
                     {
-                        Model.EditRecords edit = new Model.EditRecords(Id);
+                        Model.EditRecords edit = new Model.EditRecords(Id,ref context);
                         edit.ShowDialog();
 
 
@@ -161,6 +162,32 @@ namespace MBAF
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             context.Dispose();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Model.About about = new Model.About();
+            about.ShowDialog();
+            about.Dispose();
+        }
+
+        private void AdmintoolStripButton_Click(object sender, EventArgs e)
+        {
+            Model.Administrativ.AdminForm admin = new Model.Administrativ.AdminForm(ref context);
+            Model.Administrativ.UnlockForm unlock = new Model.Administrativ.UnlockForm(in context);
+            unlock.ShowDialog();
+            unlock.Dispose();
+            admin.ShowDialog();
+            admin.Dispose();
+            
+        
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            Model.Administrativ.UnlockForm unlock = new Model.Administrativ.UnlockForm(in context);
+            unlock.ShowDialog();
+            unlock.Dispose();
         }
     }
 }

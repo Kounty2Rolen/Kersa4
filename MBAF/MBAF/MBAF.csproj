@@ -14,6 +14,8 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,8 +30,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,9 +49,16 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\MBAF.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Building.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -74,15 +81,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBase\AudienceClass.cs" />
     <Compile Include="DataBase\AudienceType.cs" />
     <Compile Include="DataBase\Corps.cs" />
+    <Compile Include="DataBase\corpsLOG.cs" />
     <Compile Include="DataBase\DBContext.cs" />
+    <Compile Include="DataBase\Passwords.cs" />
     <Compile Include="DataBase\Teacher.cs" />
+    <Compile Include="DataBase\TeacherLOG.cs" />
+    <Compile Include="Model\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\AddAudience.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Model\AddAudience.Designer.cs">
       <DependentUpon>AddAudience.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Administrativ\AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\Administrativ\AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Administrativ\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\Administrativ\ChangePassword.Designer.cs">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Administrativ\UnlockForm.cs">
       <SubType>Form</SubType>
@@ -104,8 +133,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Model\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Model\AddAudience.resx">
       <DependentUpon>AddAudience.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\Administrativ\AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model\Administrativ\ChangePassword.resx">
+      <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model\Administrativ\UnlockForm.resx">
       <DependentUpon>UnlockForm.cs</DependentUpon>
@@ -152,10 +190,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Building.ico" />
     <Content Include="DataBase\Database1.mdf">

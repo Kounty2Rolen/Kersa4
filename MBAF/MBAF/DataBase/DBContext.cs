@@ -12,5 +12,12 @@ namespace MBAF.DataBase
         public DbSet<Corps> Corps { get; set; }
         public DbSet<AudienceType> AudienceType { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<classcorpsLOG> CorpsLog { get; set; }
+        public DbSet<AudienceClass> AudienceLog { get; set; }
+        public DbSet<TeacherLOGEF> TeachersLog { get; set; }
+        public DbSet<Passwords> passwords { get; set; }
+
+
+
     }
 }

@@ -41,7 +41,6 @@
             this.удалитьАудиториюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отредактироватьЗаписьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AdmintoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -76,7 +75,7 @@
             this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(796, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -150,24 +149,18 @@
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.помощьToolStripMenuItem,
             this.оПрограммеToolStripMenuItem});
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(66, 22);
             this.toolStripButton2.Text = "Справка";
             // 
-            // помощьToolStripMenuItem
-            // 
-            this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.помощьToolStripMenuItem.Text = "Помощь";
-            // 
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе ";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // AdmintoolStripButton
             // 
@@ -176,6 +169,7 @@
             this.AdmintoolStripButton.Name = "AdmintoolStripButton";
             this.AdmintoolStripButton.Size = new System.Drawing.Size(98, 22);
             this.AdmintoolStripButton.Text = "Администратор";
+            this.AdmintoolStripButton.Click += new System.EventHandler(this.AdmintoolStripButton_Click);
             // 
             // toolStripButton3
             // 
@@ -185,6 +179,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(95, 22);
             this.toolStripButton3.Text = "Заблокировать";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // MainContextMenuStrip
             // 
@@ -258,7 +253,6 @@
         private System.Windows.Forms.ToolStripMenuItem удалитьАудиториюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отредактироватьЗаписьToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton toolStripButton2;
-        private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
     }
 }

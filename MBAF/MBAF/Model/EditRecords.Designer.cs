@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditRecords));
-            this.FIOTextBox = new System.Windows.Forms.TextBox();
             this.CabinetTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.AuditoryCapacityNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -41,7 +40,6 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.PhoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CorpsComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,16 +47,15 @@
             this.InfoToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.AudTypeTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.LnameTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.FnameTextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.MnameTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AuditoryCapacityNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuditorNumericUpDown)).BeginInit();
             this.SuspendLayout();
-            // 
-            // FIOTextBox
-            // 
-            this.FIOTextBox.Location = new System.Drawing.Point(143, 156);
-            this.FIOTextBox.Name = "FIOTextBox";
-            this.FIOTextBox.Size = new System.Drawing.Size(133, 20);
-            this.FIOTextBox.TabIndex = 33;
             // 
             // CabinetTextBox
             // 
@@ -112,7 +109,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 185);
+            this.label6.Location = new System.Drawing.Point(12, 235);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 13);
             this.label6.TabIndex = 27;
@@ -120,7 +117,7 @@
             // 
             // BirthDayMaskedTextBox
             // 
-            this.BirthDayMaskedTextBox.Location = new System.Drawing.Point(143, 182);
+            this.BirthDayMaskedTextBox.Location = new System.Drawing.Point(143, 232);
             this.BirthDayMaskedTextBox.Mask = "00.00.0000";
             this.BirthDayMaskedTextBox.Name = "BirthDayMaskedTextBox";
             this.BirthDayMaskedTextBox.Size = new System.Drawing.Size(133, 20);
@@ -129,7 +126,7 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(94, 233);
+            this.AddButton.Location = new System.Drawing.Point(94, 283);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(75, 23);
             this.AddButton.TabIndex = 25;
@@ -140,7 +137,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 202);
+            this.label4.Location = new System.Drawing.Point(12, 252);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 26);
             this.label4.TabIndex = 24;
@@ -148,20 +145,11 @@
             // 
             // PhoneMaskedTextBox
             // 
-            this.PhoneMaskedTextBox.Location = new System.Drawing.Point(143, 208);
+            this.PhoneMaskedTextBox.Location = new System.Drawing.Point(143, 258);
             this.PhoneMaskedTextBox.Mask = "+7(999)-999-99-99";
             this.PhoneMaskedTextBox.Name = "PhoneMaskedTextBox";
             this.PhoneMaskedTextBox.Size = new System.Drawing.Size(133, 20);
             this.PhoneMaskedTextBox.TabIndex = 23;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 150);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 26);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Ответственный за ПБ\r\n(ФИО через пробел)";
             // 
             // label3
             // 
@@ -206,7 +194,6 @@
             // 
             // AudTypeTextBox
             // 
-            this.AudTypeTextBox.Enabled = false;
             this.AudTypeTextBox.Location = new System.Drawing.Point(143, 126);
             this.AudTypeTextBox.Name = "AudTypeTextBox";
             this.AudTypeTextBox.Size = new System.Drawing.Size(133, 20);
@@ -221,15 +208,68 @@
             this.label5.TabIndex = 35;
             this.label5.Text = "Тип аудитории";
             // 
+            // LnameTextBox
+            // 
+            this.LnameTextBox.Location = new System.Drawing.Point(143, 206);
+            this.LnameTextBox.Name = "LnameTextBox";
+            this.LnameTextBox.Size = new System.Drawing.Size(133, 20);
+            this.LnameTextBox.TabIndex = 42;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(12, 203);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 13);
+            this.label10.TabIndex = 41;
+            this.label10.Text = "Отчество";
+            // 
+            // FnameTextBox
+            // 
+            this.FnameTextBox.Location = new System.Drawing.Point(143, 180);
+            this.FnameTextBox.Name = "FnameTextBox";
+            this.FnameTextBox.Size = new System.Drawing.Size(133, 20);
+            this.FnameTextBox.TabIndex = 40;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 177);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(29, 13);
+            this.label9.TabIndex = 39;
+            this.label9.Text = "Имя";
+            // 
+            // MnameTextBox
+            // 
+            this.MnameTextBox.Location = new System.Drawing.Point(142, 154);
+            this.MnameTextBox.Name = "MnameTextBox";
+            this.MnameTextBox.Size = new System.Drawing.Size(133, 20);
+            this.MnameTextBox.TabIndex = 38;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 151);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Фамилия";
+            // 
             // EditRecords
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 259);
+            this.ClientSize = new System.Drawing.Size(318, 316);
+            this.Controls.Add(this.LnameTextBox);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.FnameTextBox);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.MnameTextBox);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.AudTypeTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.IDlabel);
-            this.Controls.Add(this.FIOTextBox);
             this.Controls.Add(this.CabinetTextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.AuditoryCapacityNumericUpDown);
@@ -240,16 +280,16 @@
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.PhoneMaskedTextBox);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.CorpsComboBox);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(334, 298);
-            this.MinimumSize = new System.Drawing.Size(334, 298);
+            this.MaximumSize = new System.Drawing.Size(334, 355);
+            this.MinimumSize = new System.Drawing.Size(334, 355);
             this.Name = "EditRecords";
             this.Text = "Изменит запись";
+            this.Load += new System.EventHandler(this.EditRecords_Load);
             this.Shown += new System.EventHandler(this.EditRecords_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.AuditoryCapacityNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuditorNumericUpDown)).EndInit();
@@ -259,8 +299,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox FIOTextBox;
         private System.Windows.Forms.TextBox CabinetTextBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown AuditoryCapacityNumericUpDown;
@@ -271,7 +309,6 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox PhoneMaskedTextBox;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox CorpsComboBox;
         private System.Windows.Forms.Label label1;
@@ -279,5 +316,11 @@
         private System.Windows.Forms.ToolTip InfoToolTip;
         private System.Windows.Forms.TextBox AudTypeTextBox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox LnameTextBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox FnameTextBox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox MnameTextBox;
+        private System.Windows.Forms.Label label2;
     }
 }

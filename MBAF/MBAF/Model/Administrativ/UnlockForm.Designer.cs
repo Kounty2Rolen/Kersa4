@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PasswordtextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CheckButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // PasswordtextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(120, 135);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(246, 20);
-            this.textBox1.TabIndex = 0;
+            this.PasswordtextBox.Location = new System.Drawing.Point(120, 135);
+            this.PasswordtextBox.Name = "PasswordtextBox";
+            this.PasswordtextBox.PasswordChar = '*';
+            this.PasswordtextBox.Size = new System.Drawing.Size(246, 20);
+            this.PasswordtextBox.TabIndex = 0;
             // 
             // label1
             // 
@@ -59,6 +60,7 @@
             this.CheckButton.TabIndex = 2;
             this.CheckButton.Text = "Проверить";
             this.CheckButton.UseVisualStyleBackColor = true;
+            this.CheckButton.Click += new System.EventHandler(this.CheckButton_Click);
             // 
             // UnlockForm
             // 
@@ -67,7 +69,7 @@
             this.ClientSize = new System.Drawing.Size(566, 217);
             this.Controls.Add(this.CheckButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PasswordtextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UnlockForm";
             this.Text = "UnlockForm";
@@ -78,7 +80,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PasswordtextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button CheckButton;
     }
