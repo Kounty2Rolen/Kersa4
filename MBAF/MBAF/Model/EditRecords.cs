@@ -7,31 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MBAF.DataBase;
 
 namespace MBAF.Model
 {
     public partial class EditRecords : Form
     {
-        DataBase.MyDBContext context;
         DataBase.Corps corps;
         DataBase.Teacher teacher;
         DataBase.AudienceType audience;
-        int id = 0;
-        public EditRecords(int id,ref DataBase.MyDBContext context)
+        public EditRecords(AudienceType audience)
         {
             InitializeComponent();
-            this.context = context;
-            this.id = id;
-            corps = context.Corps.Where(c => c.Id == id).FirstOrDefault();
-            teacher = context.Teachers.Where(c => c.Id == id).SingleOrDefault();
-            audience = context.AudienceType.Where(c => c.Id == id).SingleOrDefault();
+            this.audience = audience;
+            teacher = audience.Teacher;
+            corps = audience.Corp;
 
         }
 
         private void EditRecords_Shown(object sender, EventArgs e)
         {
-            IDlabel.Text = id.ToString();
-            CorpsComboBox.DataSource = context.Corps.Select(c => c.CorpNumber).ToList();
+            IDlabel.Text = audience.Id.ToString();
+            CorpsComboBox.DataSource = DBObject.context.Corps.Select(c => c.CorpNumber).ToList();
             CorpsComboBox.SelectedItem = corps.CorpNumber.FirstOrDefault();
             AuditorNumericUpDown.Value = corps.NumberOfAudiences;
             AuditoryCapacityNumericUpDown.Value = audience.Capacity;
@@ -56,15 +53,10 @@ namespace MBAF.Model
             teacher.Lname = LnameTextBox.Text;
             teacher.Phone = PhoneMaskedTextBox.Text;
             teacher.Birthday = DateTime.Parse(BirthDayMaskedTextBox.Text);
-            context.SaveChanges();
+            DBObject.context.SaveChanges();
             MessageBox.Show("Запись Изменена!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             this.Close();
             this.Dispose();
-        }
-
-        private void EditRecords_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

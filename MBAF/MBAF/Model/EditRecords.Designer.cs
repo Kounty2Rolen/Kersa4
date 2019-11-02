@@ -289,7 +289,6 @@
             this.MinimumSize = new System.Drawing.Size(334, 355);
             this.Name = "EditRecords";
             this.Text = "Изменит запись";
-            this.Load += new System.EventHandler(this.EditRecords_Load);
             this.Shown += new System.EventHandler(this.EditRecords_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.AuditoryCapacityNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuditorNumericUpDown)).EndInit();

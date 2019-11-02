@@ -7,21 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MBAF.DataBase;
 
 namespace MBAF.Model.Administrativ
 {
     public partial class UnlockForm : Form
     {
-        DataBase.MyDBContext context;
         private int password = -1;
 
-        public UnlockForm(in DataBase.MyDBContext context)
+        public UnlockForm()
         {
-            this.context = context;
             InitializeComponent();
             CenterToParent();
-            if (context.passwords.First().Password != -1)
-                password = context.passwords.FirstOrDefault().Password;
+            if (DBObject.context.passwords.First().Password != -1)
+                password = DBObject.context.passwords.FirstOrDefault().Password;
         }
 
         private void UnlockForm_Load(object sender, EventArgs e)

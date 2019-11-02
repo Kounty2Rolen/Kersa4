@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,10 +14,10 @@ namespace MBAF.DataBase
         public int Capacity { get; set; }
 
         [Column("Teacherid")]
-        public int Teacherid { get; set; }
+        public Nullable<int> Teacherid { get; set; }
 
         [Column("CorpID")]
-        public int Corpid { get; set; }
+        public Nullable<int> Corpid { get; set; }
         public string Cabinet { get; set; }
         public virtual Teacher Teacher { get; set; }
         public virtual Corps Corp { get; set;}

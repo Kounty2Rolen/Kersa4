@@ -70,6 +70,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,6 +88,7 @@
     <Compile Include="DataBase\Corps.cs" />
     <Compile Include="DataBase\corpsLOG.cs" />
     <Compile Include="DataBase\DBContext.cs" />
+    <Compile Include="DataBase\DBObject.cs" />
     <Compile Include="DataBase\Passwords.cs" />
     <Compile Include="DataBase\Teacher.cs" />
     <Compile Include="DataBase\TeacherLOG.cs" />
@@ -190,7 +193,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Building.ico" />
     <Content Include="DataBase\Database1.mdf">

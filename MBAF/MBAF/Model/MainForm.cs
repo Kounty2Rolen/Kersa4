@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Entity;
+using MBAF.DataBase;
 
 namespace MBAF
 {
@@ -13,36 +14,16 @@ namespace MBAF
         {
             InitializeComponent();
             this.CenterToScreen();
+            DGVRefresh();
+
         }
-
-        DataBase.MyDBContext context = new DataBase.MyDBContext();
-
         void DGVRefresh()
         {
-            //context.AudienceType.Load();
-            //MainDataGridView.DataSource = context.AudienceType.Local.ToBindingList();
-            MainDataGridView.DataSource = null;
-            var DGVDataSource = from Audience in context.AudienceType
-                                join Corps in context.Corps on Audience.Corpid equals Corps.Id
-                                join Teachers in context.Teachers on Audience.Teacherid equals Teachers.Id
-                                select new
-                                {
-                                    AudienceID = Audience.Id,
-                                    AudienceType = Audience.TypeOf,
-                                    AudienceCabinet = Audience.Cabinet,
-                                    AudienceCorp = Corps.CorpNumber,
-                                    Responsible_Fname = Teachers.Fname,
-                                    Responsible_Mname = Teachers.Mname,
-                                    Responsible_Lname = Teachers.Lname,
-                                    Responsible_Phone = Teachers.Phone
-                                };
-            MainDataGridView.ContextMenuStrip = MainContextMenuStrip;
-            MainDataGridView.DataSource = DGVDataSource.ToList();
-            MainDataGridView.Columns[0].Visible = false;
-
-
-
-
+      
+            MainDataGridView.DataSource = DBObject.context.AudienceType.ToList();
+            MainDataGridView.Columns["id"].Visible = false;
+            MainDataGridView.Columns["Teacherid"].Visible = false;
+            MainDataGridView.Columns["Corpid"].Visible = false;
 
         }
 
@@ -70,7 +51,11 @@ namespace MBAF
             Model.AddAudience add = null;
             if (MainDataGridView.DataSource != null)
             {
-                add = new Model.AddAudience(ref context);
+
+                AudienceType audienceType = new AudienceType();
+                Corps corps = new Corps();
+                Teacher teacher = new Teacher();
+                add = new Model.AddAudience(audienceType, teacher, corps);
                 add.ShowDialog();
                 add.Dispose();
                 DGVRefresh();
@@ -91,19 +76,20 @@ namespace MBAF
                     id = Convert.ToInt32(MainDataGridView.CurrentRow.Cells[0].Value);
                     if (id != null)
                     {
-                        DataBase.AudienceType audience = context.AudienceType.Where(c => c.Id == id).FirstOrDefault();
-                        context.AudienceType.Remove(audience);
-                        context.SaveChanges();
+                        DataBase.AudienceType audience = DBObject.context.AudienceType.Where(c => c.Id == id).FirstOrDefault();
+                        DBObject.context.AudienceType.Remove(audience);
+                        DBObject.context.SaveChanges();
+                        DGVRefresh();
                     }
                     else
                         MessageBox.Show("Таблица не подключена! Пожалуйста подключите таблицу и попробуйте еще раз", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            else
+                else
                     MessageBox.Show("Запись не выбрана! Пожалуйста выберете запись и попробуйте еще раз", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
-        void editrow()
+        void editrow(AudienceType audience = null)
         {
             int Id = -1;
             if (MainDataGridView.DataSource != null)
@@ -113,8 +99,9 @@ namespace MBAF
                     Id = Convert.ToInt32(MainDataGridView.CurrentRow.Cells[0].Value);
                     if (Id != null)
                     {
-                        Model.EditRecords edit = new Model.EditRecords(Id,ref context);
+                        Model.EditRecords edit = new Model.EditRecords(audience);
                         edit.ShowDialog();
+                        DGVRefresh();
 
 
                     }
@@ -130,6 +117,7 @@ namespace MBAF
 
         private void AddAudienceToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             ShowAddAudience();
         }
 
@@ -138,33 +126,7 @@ namespace MBAF
             DeleteRow();
         }
 
-        private void AddTpoolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowAddAudience();
-        }
-
-        private void DelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DeleteRow();
-        }
-
-        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            editrow();
-        }
-
-        private void ОтредактироватьЗаписьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            editrow();
-
-        }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            context.Dispose();
-        }
-
-        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Model.About about = new Model.About();
             about.ShowDialog();
@@ -173,21 +135,32 @@ namespace MBAF
 
         private void AdmintoolStripButton_Click(object sender, EventArgs e)
         {
-            Model.Administrativ.AdminForm admin = new Model.Administrativ.AdminForm(ref context);
-            Model.Administrativ.UnlockForm unlock = new Model.Administrativ.UnlockForm(in context);
+            Model.Administrativ.AdminForm admin = new Model.Administrativ.AdminForm();
+            Model.Administrativ.UnlockForm unlock = new Model.Administrativ.UnlockForm();
             unlock.ShowDialog();
             unlock.Dispose();
             admin.ShowDialog();
             admin.Dispose();
-            
-        
+
+
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            Model.Administrativ.UnlockForm unlock = new Model.Administrativ.UnlockForm(in context);
+            Model.Administrativ.UnlockForm unlock = new Model.Administrativ.UnlockForm();
             unlock.ShowDialog();
             unlock.Dispose();
+        }
+
+        private void MainDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AudienceType audiencetype = (AudienceType)MainDataGridView.Rows[e.RowIndex].DataBoundItem;
+            editrow(audiencetype);
+        }
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+           MainDataGridView.DataSource = DBObject.context.AudienceType.Where(c => c.Teacher.Lname.Contains(searchTextBox.Text)|| c.Teacher.Fname.Contains(searchTextBox.Text) || c.Teacher.Mname.Contains(searchTextBox.Text) || c.TypeOf.Contains(searchTextBox.Text) || c.Corp.CorpNumber.ToString().Contains(searchTextBox.Text) || c.Capacity.ToString().Contains(searchTextBox.Text) ||c.Cabinet.Contains(searchTextBox.Text)).ToList();
         }
     }
 }

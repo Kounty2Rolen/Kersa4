@@ -21,5 +21,6 @@ namespace MBAF.DataBase
         public DateTime Birthday { get; set; }
 
         public virtual ICollection<AudienceType> AudienceTypes { get; set; }
+        public override string ToString() => Fname + " " + Mname + " " + Lname;
     }
 }

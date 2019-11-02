@@ -192,7 +192,7 @@
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(75, 23);
             this.AddButton.TabIndex = 23;
-            this.AddButton.Text = "Добавить";
+            this.AddButton.Text = "Сохранить";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -279,7 +279,6 @@
             this.MinimumSize = new System.Drawing.Size(305, 275);
             this.Name = "AddAudience";
             this.Text = "Добавление записи";
-            this.Load += new System.EventHandler(this.AddAudience_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AuditorNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AuditoryCapacityNumericUpDown)).EndInit();
             this.ResumeLayout(false);

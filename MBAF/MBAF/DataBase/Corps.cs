@@ -14,5 +14,7 @@ namespace MBAF.DataBase
         public int NumberOfAudiences { get; set; }
 
         public virtual ICollection<AudienceType> AudienceTypes { get; set; }
+
+        public override string ToString() => CorpNumber;
     }
 }

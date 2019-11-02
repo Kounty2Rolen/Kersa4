@@ -6,7 +6,7 @@ namespace MBAF.DataBase
 {
     public class MyDBContext : DbContext
     {
-        internal MyDBContext() : base($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Application.StartupPath}\DataBase\Database1.mdf;Integrated Security=True;")
+        internal MyDBContext() : base($@"Data Source=WIN-O6S40144ELL\SQLEXPRESS;Initial Catalog=MBAF;Integrated Security=True")
         {
         }
         public DbSet<Corps> Corps { get; set; }

@@ -7,16 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MBAF.DataBase;
 
 namespace MBAF.Model.Administrativ
 {
     public partial class AdminForm : Form
     {
-        DataBase.MyDBContext context;
-        public AdminForm(ref DataBase.MyDBContext context)
+        public AdminForm()
         {
             InitializeComponent();
-            this.context = context;
             AudienceTabPage.Controls.Add(AudienceLOGDataGridView);
             CorptabPage.Controls.Add(CorpLogDataGridView);
             TeacherTabPage.Controls.Add(TeacherLogDataGridView);
@@ -24,15 +23,15 @@ namespace MBAF.Model.Administrativ
         
         private void PasswordButton_Click(object sender, EventArgs e)
         {
-            ChangePassword changePasswor = new ChangePassword(ref context);
+            ChangePassword changePasswor = new ChangePassword();
             changePasswor.ShowDialog();
         }
 
         private void RealoadButton_Click(object sender, EventArgs e)
         {
-            TeacherLogDataGridView.DataSource = context.TeachersLog.ToList();
-            CorpLogDataGridView.DataSource = context.CorpsLog.ToList();
-            AudienceLOGDataGridView.DataSource = context.AudienceLog.ToList();
+            TeacherLogDataGridView.DataSource = DBObject.context.TeachersLog.ToList();
+            CorpLogDataGridView.DataSource = DBObject.context.CorpsLog.ToList();
+            AudienceLOGDataGridView.DataSource = DBObject.context.AudienceLog.ToList();
         }
     }
 }

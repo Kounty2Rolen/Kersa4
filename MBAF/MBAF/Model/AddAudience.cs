@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MBAF.DataBase;
+using System;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MBAF.Model
 {
     public partial class AddAudience : Form
     {
-        DataBase.MyDBContext context;
-        bool FirstRow = false;
-        public AddAudience(ref DataBase.MyDBContext context, bool FirstRow = false)
+        private readonly AudienceType audience;
+        private readonly Teacher teacher;
+        private readonly Corps corps;
+
+        public AddAudience(AudienceType At, Teacher Tc, Corps C)
         {
+            this.audience = At;
+            this.teacher = Tc;
+            this.corps = C;
             InitializeComponent();
-            this.context = context;
-            this.FirstRow = FirstRow;
-            CorpsComboBox.DataSource = context.Corps.Select(c => c.CorpNumber).ToList();
+            CorpsComboBox.DataSource = DBObject.context.Corps.Select(c => c.CorpNumber).ToList();
             CorpsComboBox.SelectedIndex = -1;
         }
 
@@ -28,31 +27,34 @@ namespace MBAF.Model
             try
             {
                 DateTime.Parse(BirthDayMaskedTextBox.Text);
-                var teacher = new DataBase.Teacher();
+
                 teacher.Mname = MnameTextBox.Text;
                 teacher.Fname = FnameTextBox.Text;
                 teacher.Lname = LnameTextBox.Text;
                 teacher.Phone = PhoneMaskedTextBox.Text;
                 teacher.Birthday = DateTime.Parse(BirthDayMaskedTextBox.Text);
-                context.Teachers.Add(teacher);
 
-                var corps = new DataBase.Corps
+                corps.CorpNumber = CorpsComboBox.Text;
+                corps.NumberOfAudiences = (int)AuditorNumericUpDown.Value;
+
+
+                audience.Cabinet = CabinetTextBox.Text;
+                audience.TypeOf = AudTypeTextBox.Text;
+                audience.Capacity = (int)AuditoryCapacityNumericUpDown.Value;
+                audience.Teacherid = teacher.Id;
+                audience.Corpid = corps.Id;
+
+
+                if (DBObject.context.AudienceType.Where(c => c.Cabinet == audience.Cabinet&&c.Corp.CorpNumber==corps.CorpNumber).Count() == 0)
                 {
-                    CorpNumber = CorpsComboBox.Text,
-                    NumberOfAudiences = (int)AuditorNumericUpDown.Value
-                };
-                context.Corps.Add(corps);
-                var AudienceType = new DataBase.AudienceType
-                {
-                    Cabinet = CabinetTextBox.Text,
-                    TypeOf = AudTypeTextBox.Text,
-                    Capacity = (int)AuditoryCapacityNumericUpDown.Value
-                };
-                AudienceType.Teacherid = teacher.Id;
-                AudienceType.Corpid = corps.Id;
-                context.AudienceType.Add(AudienceType);
-                context.SaveChanges();
-                MessageBox.Show("Запись добавлена!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    DBObject.context.Corps.Add(corps);
+                    DBObject.context.Teachers.Add(teacher);
+                    DBObject.context.AudienceType.Add(audience);
+                    DBObject.context.SaveChanges();
+                    MessageBox.Show("Запись добавлена!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else MessageBox.Show("Запись уже есть!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 this.Close();
                 this.Dispose();
 
@@ -93,9 +95,5 @@ namespace MBAF.Model
             }
         }
 
-        private void AddAudience_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

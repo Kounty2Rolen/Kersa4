@@ -7,29 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MBAF.DataBase;
 
 namespace MBAF.Model.Administrativ
 {
     public partial class ChangePassword : Form
     {
-        DataBase.MyDBContext context;
         int password;
-        public ChangePassword(ref DataBase.MyDBContext context)
+        public ChangePassword()
         {
             InitializeComponent();
-            this.context = context;
-            password = context.passwords.FirstOrDefault().Password;
+            password = DBObject.context.passwords.FirstOrDefault().Password;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            DataBase.Passwords pass = context.passwords.First();
+            DataBase.Passwords pass = DBObject.context.passwords.First();
             if (OldPasswordTextBox.Text.GetHashCode() == password||password==-1)
             {
                 if (NewPasswordTextBox.Text == RepeatPasswordTextBox.Text)
                 {
                     pass.Password = NewPasswordTextBox.Text.GetHashCode();
-                    context.SaveChanges();
+                    DBObject.context.SaveChanges();
                     MessageBox.Show("Пароль успешно изменен!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -40,11 +39,6 @@ namespace MBAF.Model.Administrativ
             }
             else
                 MessageBox.Show("Старый пароль не верен", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void ChangePassword_Load(object sender, EventArgs e)
-        {
-            password = context.passwords.FirstOrDefault().Password;
         }
     }
 }
