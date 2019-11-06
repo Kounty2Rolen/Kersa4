@@ -1,11 +1,11 @@
-﻿using System;
+﻿
 using System.Data.Entity;
-using System.Windows.Forms;
 
-namespace MBAF.DataBase
+namespace MBAF.EntityModel
 {
     public class MyDBContext : DbContext
     {
+        
         internal MyDBContext() : base($@"Data Source=WIN-O6S40144ELL\SQLEXPRESS;Initial Catalog=MBAF;Integrated Security=True")
         {
         }

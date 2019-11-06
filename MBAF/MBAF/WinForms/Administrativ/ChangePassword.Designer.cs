@@ -1,4 +1,4 @@
-﻿namespace MBAF.Model.Administrativ
+﻿namespace MBAF.WinForms.Administrativ
 {
     partial class ChangePassword
     {

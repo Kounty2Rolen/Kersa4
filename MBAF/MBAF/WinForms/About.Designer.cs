@@ -1,4 +1,4 @@
-﻿namespace MBAF.Model
+﻿namespace MBAF.WinForms
 {
     partial class About
     {

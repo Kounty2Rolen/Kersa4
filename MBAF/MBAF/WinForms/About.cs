@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MBAF.Model
+namespace MBAF.WinForms
 {
     public partial class About : Form
     {

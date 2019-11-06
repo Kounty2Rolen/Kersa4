@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MBAF.DataBase;
+using MBAF.EntityModel;
 
-namespace MBAF.Model.Administrativ
+namespace MBAF.WinForms.Administrativ
 {
     public partial class ChangePassword : Form
     {
@@ -22,7 +22,7 @@ namespace MBAF.Model.Administrativ
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            DataBase.Passwords pass = DBObject.context.passwords.First();
+            EntityModel.Passwords pass = DBObject.context.passwords.First();
             if (OldPasswordTextBox.Text.GetHashCode() == password||password==-1)
             {
                 if (NewPasswordTextBox.Text == RepeatPasswordTextBox.Text)

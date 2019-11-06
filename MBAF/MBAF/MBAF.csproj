@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -62,10 +61,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -83,78 +82,69 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBase\AudienceClass.cs" />
-    <Compile Include="DataBase\AudienceType.cs" />
-    <Compile Include="DataBase\Corps.cs" />
-    <Compile Include="DataBase\corpsLOG.cs" />
-    <Compile Include="DataBase\DBContext.cs" />
-    <Compile Include="DataBase\DBObject.cs" />
-    <Compile Include="DataBase\Passwords.cs" />
-    <Compile Include="DataBase\Teacher.cs" />
-    <Compile Include="DataBase\TeacherLOG.cs" />
-    <Compile Include="Model\About.cs">
+    <Compile Include="EntityModel\AudienceClass.cs" />
+    <Compile Include="EntityModel\AudienceType.cs" />
+    <Compile Include="EntityModel\Corps.cs" />
+    <Compile Include="EntityModel\corpsLOG.cs" />
+    <Compile Include="EntityModel\DBContext.cs" />
+    <Compile Include="EntityModel\DBObject.cs" />
+    <Compile Include="EntityModel\Passwords.cs" />
+    <Compile Include="EntityModel\Teacher.cs" />
+    <Compile Include="EntityModel\TeacherLOG.cs" />
+    <Compile Include="WinForms\About.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Model\About.Designer.cs">
+    <Compile Include="WinForms\About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\AddAudience.cs">
+    <Compile Include="WinForms\AddAudience.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Model\AddAudience.Designer.cs">
+    <Compile Include="WinForms\AddAudience.Designer.cs">
       <DependentUpon>AddAudience.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Administrativ\AdminForm.cs">
+    <Compile Include="WinForms\Administrativ\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Model\Administrativ\AdminForm.Designer.cs">
+    <Compile Include="WinForms\Administrativ\AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Administrativ\ChangePassword.cs">
+    <Compile Include="WinForms\Administrativ\ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Model\Administrativ\ChangePassword.Designer.cs">
+    <Compile Include="WinForms\Administrativ\ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Administrativ\UnlockForm.cs">
+    <Compile Include="WinForms\Administrativ\UnlockForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Model\Administrativ\UnlockForm.Designer.cs">
+    <Compile Include="WinForms\Administrativ\UnlockForm.Designer.cs">
       <DependentUpon>UnlockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\EditRecords.cs">
+    <Compile Include="WinForms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Model\EditRecords.Designer.cs">
-      <DependentUpon>EditRecords.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Model\MainForm.Designer.cs">
+    <Compile Include="WinForms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Model\About.resx">
+    <EmbeddedResource Include="WinForms\About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Model\AddAudience.resx">
+    <EmbeddedResource Include="WinForms\AddAudience.resx">
       <DependentUpon>AddAudience.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Model\Administrativ\AdminForm.resx">
+    <EmbeddedResource Include="WinForms\Administrativ\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Model\Administrativ\ChangePassword.resx">
+    <EmbeddedResource Include="WinForms\Administrativ\ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Model\Administrativ\UnlockForm.resx">
+    <EmbeddedResource Include="WinForms\Administrativ\UnlockForm.resx">
       <DependentUpon>UnlockForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Model\EditRecords.resx">
-      <DependentUpon>EditRecords.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Model\MainForm.resx">
+    <EmbeddedResource Include="WinForms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -198,21 +188,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Building.ico" />
-    <Content Include="DataBase\Database1.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DataBase\Database1_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
 </Project>

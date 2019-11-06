@@ -1,4 +1,4 @@
-﻿namespace MBAF.Model
+﻿namespace MBAF.WinForms
 {
     partial class AddAudience
     {
@@ -70,7 +70,6 @@
             this.CorpsComboBox.Name = "CorpsComboBox";
             this.CorpsComboBox.Size = new System.Drawing.Size(133, 21);
             this.CorpsComboBox.TabIndex = 1;
-            this.CorpsComboBox.TextUpdate += new System.EventHandler(this.CorpsComboBox_TextUpdate);
             // 
             // label3
             // 
@@ -92,7 +91,6 @@
             // 
             // AuditorNumericUpDown
             // 
-            this.AuditorNumericUpDown.Enabled = false;
             this.AuditorNumericUpDown.Location = new System.Drawing.Point(143, 45);
             this.AuditorNumericUpDown.Maximum = new decimal(new int[] {
             10000,
@@ -123,7 +121,6 @@
             // 
             // AuditoryCapacityNumericUpDown
             // 
-            this.AuditoryCapacityNumericUpDown.Enabled = false;
             this.AuditoryCapacityNumericUpDown.Location = new System.Drawing.Point(143, 71);
             this.AuditoryCapacityNumericUpDown.Maximum = new decimal(new int[] {
             10000,
@@ -136,7 +133,6 @@
             // 
             // CabinetTextBox
             // 
-            this.CabinetTextBox.Enabled = false;
             this.CabinetTextBox.Location = new System.Drawing.Point(143, 97);
             this.CabinetTextBox.Name = "CabinetTextBox";
             this.CabinetTextBox.Size = new System.Drawing.Size(133, 20);
@@ -144,7 +140,6 @@
             // 
             // MnameTextBox
             // 
-            this.MnameTextBox.Enabled = false;
             this.MnameTextBox.Location = new System.Drawing.Point(143, 149);
             this.MnameTextBox.Name = "MnameTextBox";
             this.MnameTextBox.Size = new System.Drawing.Size(133, 20);
@@ -152,7 +147,6 @@
             // 
             // AudTypeTextBox
             // 
-            this.AudTypeTextBox.Enabled = false;
             this.AudTypeTextBox.Location = new System.Drawing.Point(143, 123);
             this.AudTypeTextBox.Name = "AudTypeTextBox";
             this.AudTypeTextBox.Size = new System.Drawing.Size(133, 20);
@@ -178,7 +172,6 @@
             // 
             // BirthDayMaskedTextBox
             // 
-            this.BirthDayMaskedTextBox.Enabled = false;
             this.BirthDayMaskedTextBox.Location = new System.Drawing.Point(143, 227);
             this.BirthDayMaskedTextBox.Mask = "00.00.0000";
             this.BirthDayMaskedTextBox.Name = "BirthDayMaskedTextBox";
@@ -207,7 +200,6 @@
             // 
             // PhoneMaskedTextBox
             // 
-            this.PhoneMaskedTextBox.Enabled = false;
             this.PhoneMaskedTextBox.Location = new System.Drawing.Point(143, 253);
             this.PhoneMaskedTextBox.Mask = "+7(999)-999-99-99";
             this.PhoneMaskedTextBox.Name = "PhoneMaskedTextBox";
@@ -216,7 +208,6 @@
             // 
             // FnameTextBox
             // 
-            this.FnameTextBox.Enabled = false;
             this.FnameTextBox.Location = new System.Drawing.Point(144, 175);
             this.FnameTextBox.Name = "FnameTextBox";
             this.FnameTextBox.Size = new System.Drawing.Size(133, 20);
@@ -233,7 +224,6 @@
             // 
             // LnameTextBox
             // 
-            this.LnameTextBox.Enabled = false;
             this.LnameTextBox.Location = new System.Drawing.Point(144, 201);
             this.LnameTextBox.Name = "LnameTextBox";
             this.LnameTextBox.Size = new System.Drawing.Size(133, 20);

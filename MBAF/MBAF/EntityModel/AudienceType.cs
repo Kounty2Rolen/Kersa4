@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MBAF.DataBase
+namespace MBAF.EntityModel
 {
     [Table("AudienceType")]
     public class AudienceType
@@ -20,7 +19,14 @@ namespace MBAF.DataBase
         public Nullable<int> Corpid { get; set; }
         public string Cabinet { get; set; }
         public virtual Teacher Teacher { get; set; }
-        public virtual Corps Corp { get; set;}
+        public virtual Corps Corp { get; set; }
+
+        static AudienceType()
+        {
+
+
+        }
+
     }
 
 }
